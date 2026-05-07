@@ -217,4 +217,4 @@ D：該当なし
             except Exception as e:
                 st.error(f"解析エラー: {e}")
 else:
-    st.info("アプリ1から出力されたCSVファイルをアップロードしてください。")
+    st.info("Risk Assessment Tool Proから出力されたCSVファイルをアップロードしてください。")
