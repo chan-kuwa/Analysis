@@ -6,9 +6,44 @@ import plotly.graph_objects as go
 from io import BytesIO
 
 # --- ページ設定 ---
-st.set_page_config(page_title="Risk Analysis Engine", layout="wide")
+# 画像ファイルのパスを設定（スクリプトと同じディレクトリにある想定）
+icon_path = "hro.png"
 
-st.title("🔬 Risk Structure Analysis Engine")
+# 画像ファイルが存在する場合のみ設定を適用
+if os.path.exists(icon_path):
+    st.set_page_config(
+        page_title="Risk Analysis Engine",
+        page_icon=icon_path, # ブラウザのタブアイコンを設定
+        layout="wide"
+    )
+else:
+    # 画像がない場合のフォールバック（デフォルトの挙動）
+    st.set_page_config(
+        page_title="Risk Analysis Engine",
+        layout="wide"
+    )
+    st.warning(f"警告: アイコン画像ファイル '{icon_path}' が見つかりません。タイトル横の画像は表示されません。")
+
+
+# --- タイトル部分（画像とテキストを横並びにする） ---
+if os.path.exists(icon_path):
+    # 2つのカラムを作成。1つ目は画像用、2つ目はタイトル用。
+    # 幅の比率を 1:20 程度にして、画像を小さく表示させる。
+    col1, col2 = st.columns([1, 20])
+    
+    with col1:
+        # タイトルの高さに合わせるため、少しパディング調整（必要に応じてuse_container_widthなどを調整）
+        st.image(icon_path, width=45) # widthで画像の大きさを微調整
+
+    with col2:
+        # カラム2にメインタイトルを表示
+        st.title("Risk Structure Analysis Engine")
+else:
+    # 画像がない場合は通常通りタイトルのみ表示
+    st.title("🔬 Risk Structure Analysis Engine")
+
+
+# --- キャプション ---
 st.caption("評価データ(CSV)を統合し、HRO原則に基づいた多職種解析を実行します")
 
 # --- サイドバー：API設定 & マスター定義 ---
