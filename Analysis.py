@@ -49,10 +49,10 @@ if uploaded_files:
     st.header("2. 分析対象の選択と可視化")
     
     # CSV内のリスク事象からセレクトボックスで選択
-    target_risks = combined_df["Risk_Event"].unique()
+    target_risks = combined_df["risk_event"].unique()
     selected_risk = st.selectbox("分析するリスク事象を選択", target_risks)
     
-    analysis_data = combined_df[combined_df["Risk_Event"] == selected_risk]
+    analysis_data = combined_df[combined_df["risk_event"] == selected_risk]
 
     # --- 可視化セクション ---
     col1, col2 = st.columns(2)
