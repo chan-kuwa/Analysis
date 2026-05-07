@@ -3,6 +3,7 @@ import pandas as pd
 import google.generativeai as genai
 import plotly.express as px
 import plotly.graph_objects as go
+import os
 from io import BytesIO
 
 # --- ページ設定 ---
