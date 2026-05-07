@@ -55,7 +55,7 @@ with st.sidebar:
         genai.configure(api_key=api_key)
         st.success("API認証済み")
     
-    # 元のモデル名を維持
+    
     selected_model = "gemini-3-flash-preview"
 
     st.divider()
@@ -68,7 +68,7 @@ with st.sidebar:
 
 # --- メインコンテンツ ---
 st.header("1. 評価データのインポート")
-uploaded_files = st.file_uploader("アプリ1で出力したCSVを複数選択してください", 
+uploaded_files = st.file_uploader("Risk Assessment Tool Proで出力したCSVを複数選択してください", 
                                   type="csv", accept_multiple_files=True)
 
 if uploaded_files:
